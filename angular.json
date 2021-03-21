@@ -124,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "optimization-workshop-example"
+  "defaultProject": "optimization-workshop-example",
+  "cli": {
+    "analytics": false
+  }
 }
