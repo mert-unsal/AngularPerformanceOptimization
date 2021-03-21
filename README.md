@@ -1,0 +1,2 @@
+# AngularPerformanceOptimization
+Angular Performance Optimisation Workshop Demo
