@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { List } from 'immutable';
 import { EmployeeData } from './models/EmployeeData.model'
 import { ListGeneratorService } from './shared/list-generator.service';
 import { Names } from './shared/names';
@@ -14,16 +15,16 @@ export class AppComponent implements OnInit {
   constructor(private generator: ListGeneratorService) {}
 
   ngOnInit(): void {
-    this.salesList = this.generator.generate(Names,NumRange, 140);
-    this.rndList = this.generator.generate(Names,NumRange, 140);
+    this.salesList = List(this.generator.generate(Names,NumRange, 140));
+    this.rndList = List(this.generator.generate(Names,NumRange, 140));
     
   }
-  salesList: EmployeeData[] = [];
-  rndList: EmployeeData[] = [];
+  salesList: List<EmployeeData>;
+  rndList: List<EmployeeData>;
   label: string
 
   add(list: EmployeeData[], name: string) {
-    list.unshift({employeeName:name,employeeValue:this.generator.generateNumber(NumRange)});
+    return list.unshift({employeeName:name,employeeValue:this.generator.generateNumber(NumRange)});
   }
 
   remove(list:EmployeeData[],node: EmployeeData) {

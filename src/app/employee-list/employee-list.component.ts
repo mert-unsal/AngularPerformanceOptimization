@@ -1,6 +1,7 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit, Input, Output, ChangeDetectionStrategy } from '@angular/core';
 import { EmployeeData } from '../models/EmployeeData.model';
 import { EventEmitter } from '@angular/core';
+import { List } from 'immutable';
 
 const fibonacci = (num:number):number => {
   if(num === 1 || num === 2) {
@@ -11,11 +12,12 @@ const fibonacci = (num:number):number => {
 
 @Component({
   selector: 'app-employee-list',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './employee-list.component.html',
   styleUrls: ['./employee-list.component.less']
 })
 export class EmployeeListComponent implements OnInit {
-  @Input() data: EmployeeData[];
+  @Input() data: List<EmployeeData>;
   @Input() department: string;
 
   @Output() remove = new EventEmitter<EmployeeData>();
