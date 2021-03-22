@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-
+import memo  from 'memo-decorator'
 const fibonacci = (num:number):number => {
   if(num === 1 || num === 2) {
     return 1;
@@ -12,6 +12,7 @@ const fibonacci = (num:number):number => {
   pure: true        // Just to be more explicitly presentation
 })
 export class CalculatePipe implements PipeTransform {
+  @memo()
   transform(value: number, ...args: any[]): number {
     console.log("Calculating ", value);
     return fibonacci(value);
