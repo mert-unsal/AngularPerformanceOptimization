@@ -23,12 +23,12 @@ export class AppComponent implements OnInit {
   rndList: List<EmployeeData>;
   label: string
 
-  add(list: EmployeeData[], name: string) {
+  add(list: List<EmployeeData>, name: string) {
     return list.unshift({employeeName:name,employeeValue:this.generator.generateNumber(NumRange)});
   }
 
-  remove(list:EmployeeData[],node: EmployeeData) {
-    list.splice(list.indexOf(node),1);
+  remove(list:List<EmployeeData>,node: EmployeeData) {
+    return list.splice(list.indexOf(node),1);
   }
 
 }
