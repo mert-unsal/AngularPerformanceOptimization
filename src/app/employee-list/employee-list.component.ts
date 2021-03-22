@@ -1,14 +1,6 @@
-import { Component, OnInit, Input, Output, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
 import { EmployeeData } from '../models/EmployeeData.model';
-import { EventEmitter } from '@angular/core';
 import { List } from 'immutable';
-
-const fibonacci = (num:number):number => {
-  if(num === 1 || num === 2) {
-    return 1;
-  }
-  return fibonacci(num - 1) + fibonacci(num - 2); 
-}
 
 @Component({
   selector: 'app-employee-list',
@@ -16,30 +8,10 @@ const fibonacci = (num:number):number => {
   templateUrl: './employee-list.component.html',
   styleUrls: ['./employee-list.component.less']
 })
-export class EmployeeListComponent implements OnInit {
+export class EmployeeListComponent {
   @Input() data: List<EmployeeData>;
   @Input() department: string;
-
-  @Output() remove = new EventEmitter<EmployeeData>();
+  
   @Output() add = new EventEmitter<String>();
-
-  label:string;
-
-  constructor() { }
-
-  ngOnInit(): void {
-    console.log(this.data);
-   }
-
-  handleKey(event:any) {
-    if(event.keyCode === 13) {
-      this.add.emit(this.label);
-      this.label = '';
-    }
-  }
-
-  calculate(num:number) {
-    console.log('Calculating', this.department);
-    return fibonacci(num); 
-  }
+  @Output() remove = new EventEmitter<String>();
 }
