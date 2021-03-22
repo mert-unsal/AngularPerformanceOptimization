@@ -2,7 +2,7 @@
 <div *ngFor="let item of data">
     <div class="item-container">
         <p>{{ item.employeeName }}</p>
-        <p>{{ calculate(item.employeeValue) }} </p>
+        <p>{{ item.employeeValue | calculate }} </p>
         <button style="align-self: flex-end;" class="button" (click)="remove.emit(item)">Delete</button>
     </div>
 </div>

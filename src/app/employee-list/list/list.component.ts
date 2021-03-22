@@ -2,12 +2,7 @@ import { Component, OnInit, Output, EventEmitter, Input, ChangeDetectionStrategy
 import { EmployeeData } from 'src/app/models/EmployeeData.model';
 import { List } from 'immutable';
 
-const fibonacci = (num:number):number => {
-  if(num === 1 || num === 2) {
-    return 1;
-  }
-  return fibonacci(num - 1) + fibonacci(num - 2); 
-}
+
 
 @Component({
   selector: 'app-list',
@@ -18,9 +13,5 @@ const fibonacci = (num:number):number => {
 export class ListComponent  {
   @Input() data: List<EmployeeData>;
   @Output() remove = new EventEmitter<EmployeeData>();
-
-  calculate(num:number) {
-    return fibonacci(num); 
-  }
   
 }
