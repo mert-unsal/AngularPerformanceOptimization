@@ -14,8 +14,8 @@ export class AppComponent implements OnInit {
   constructor(private generator: ListGeneratorService) {}
 
   ngOnInit(): void {
-    this.salesList = this.generator.generate(Names,NumRange, 10);
-    this.rndList = this.generator.generate(Names,NumRange, 10);
+    this.salesList = this.generator.generate(Names,NumRange, 140);
+    this.rndList = this.generator.generate(Names,NumRange, 140);
     
   }
   salesList: EmployeeData[] = [];
